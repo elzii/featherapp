@@ -8,6 +8,13 @@ HomeController = AppController.extend({
     posts: Posts.find({})
   },
 
+  onBeforeAction: function() {
+
+    console.log( Meteor.users.findOne({ _id: 'ggSfLDcytH4tCNF4K' }) )
+
+    this.next()
+  },
+
   onAfterAction: function () {
     Meta.setTitle('Home');
   }
