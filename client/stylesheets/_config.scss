@@ -1,0 +1,63 @@
+
+
+/**
+ * Font Sizes
+ */
+$font-default: "brandon-grotesque", "Brandon Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-alt: "clavo", Helvetica, Arial, sans-serif;
+$font-serif: "clavo", "Clavo", "Georgia", Georgia, serif;
+$font-serif-alt: "Adelle", Georgia, serif;
+$font-sans: Helvetica, Arial, sans-serif;
+$font-icons: "FontAwesome", FontAwesome;
+$font-icons-alt: "icomoon";
+
+
+
+/**
+ * Colors
+ */
+
+$color-primary          : #5c28a4; // Purple
+$color-primary-alt      : #612aac;
+$color-primary-bright   : #ac2fb0;
+$color-primary-dark     : darken($color-primary, 7); 
+$color-primary-light    : #c196f4;
+$color-primary-lighter  : #efe9f7;
+
+$color-secondary        : #f9ce30; // Yellow
+$color-secondary-warm   : #e8aa16;
+
+$color-anchor-default   : #2267f3; // Blue (Anchors)
+
+$color-gray             : #777777; // Gray
+$color-gray-light       : #c1c1c1; // Light Gray
+$color-gray-med         : #b4b4b5; // Gray Text
+$color-gray-text        : #868585; // Gray Text
+$color-gray-dark        : #333333; // Gray Text
+
+$color-offwhite         : #f6f6f6; // Offwhite
+
+$color-text-default     : #262729;
+$color-text-offwhite    : #e1e1e1;
+
+
+$color-success          : #94df60;
+$color-error            : #e16060;
+
+/**
+ * Breakpoints
+ */
+$breakpoint-mobile : 768px;
+
+
+/**
+ * Transitions
+ */
+$transitions : (
+  default : ease-in-out, 
+  cubic   : cubic-bezier(.64,.09,.08,1)
+);
+
+
+
+
