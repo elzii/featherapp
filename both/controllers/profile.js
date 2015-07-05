@@ -1,11 +1,11 @@
 ProfileController = AppController.extend({
 
   waitOn: function() {
-    return this.subscribe('posts');
+    // return this.subscribe('profile');
   },
 
   data: {
-    posts: Posts.find({})
+    // posts: Posts.find({})
   },
 
   onAfterAction: function () {
