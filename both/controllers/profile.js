@@ -1,16 +1,16 @@
 ProfileController = AppController.extend({
 
   waitOn: function() {
-    // return this.subscribe('user');
+    return Meteor.users.findOne({ _id: this.userId })
   },
 
   // data: {
-    
+
   // },
 
-  onBeforeAction: function () {
-    this.next()
-  },
+  // onBeforeAction: function () {
+  //   this.next()
+  // },
 
   onAfterAction: function () {
     Meta.setTitle('Profile');
@@ -21,6 +21,8 @@ ProfileController = AppController.extend({
 
 /**
  * Events
+ *
+ * @debug
  */
 ProfileController.events({
   'click button#update-user': function (event, template) {
@@ -33,6 +35,12 @@ ProfileController.events({
     }, function (user_profile) {
       console.log( 'callback', user_profile )
     })
+  },
+})
+
+ProfileController.helpers({
+  profileData: function() {
+    return Meteor.user().profile;
   }
 })
 
@@ -41,12 +49,33 @@ ProfileController.events({
  */
 if ( Meteor.isClient ) {
 
-  Template.formUserProfile.helpers({
-    formData: function() {
-      return Meteor.user().profile;
+  /**
+   * Form Data
+   */
+
+  /**
+   * Form Events
+   */
+  Template.formUserProfile.events({
+    'submit form': function(event, template) {      
+      event.preventDefault()
+
+      var form = event.target
+
+      var data = {
+        'profile.firstName' : form['firstName'].value,
+        'profile.lastName' : form['lastName'].value,
+        'profile.gender' : form['gender'].value,
+      }
+
+      updateUserProfile( data, function (userProfile) {
+        console.log( 'updateUserProfile', userProfile )
+      })
+
     }
   })
 
-  console.log( Meteor.user().profile )
+
+
 
 }

@@ -1,7 +1,45 @@
 <template name="formUserProfile">
-  <ul>
-  {{#with formData}}
-    <li>Gender: <b>{{gender}}</b></li>
+  
+  <!-- <span class="input-group-addon"></span> -->
+
+  <form>
+  {{#with profileData}}
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6">
+          <label class="control-label input-label">First Name</label>
+          <input class="form-control" value="{{firstName}}" name="firstName" type="text">
+          <span class="help-block"></span>
+        </div>
+        <div class="col-sm-6">
+          <label class="control-label input-label">Last Name</label>
+          <input class="form-control" value="{{lastName}}" name="lastName" type="text">
+          <span class="help-block"></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label input-label label-block">Gender</label>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+          <input type="radio" name="gender" autocomplete="off" value="{{gender}}" checked> {{gender}}
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="gender" autocomplete="off" value="Male"> Male
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="gender" autocomplete="off" value="Female"> Female
+        </label>
+      </div>
+    </div>
+
+    <hr>
+
+    <button type="submit" id="submit--formUserProfile" class="btn btn-success">Save</button>
+
   {{/with}}
-  </ul>
+  </form>
+
 </template>

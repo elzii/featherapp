@@ -9,9 +9,7 @@ HomeController = AppController.extend({
   },
 
   onBeforeAction: function() {
-
-    console.log( Meteor.users.findOne({ _id: 'ggSfLDcytH4tCNF4K' }) )
-
+    // console.log( Meteor.users.findOne({ _id: 'ggSfLDcytH4tCNF4K' }) )
     this.next()
   },
 
