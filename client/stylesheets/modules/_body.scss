@@ -1,0 +1,15 @@
+html,body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+  margin-bottom: -60px; // for sticky footer
+
+  &.page-wrap {}
+
+  &:after {
+    content: '';
+    display: block;
+  }
+
+}
