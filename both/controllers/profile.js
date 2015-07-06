@@ -55,6 +55,7 @@ if ( Meteor.isClient ) {
 
   /**
    * Form Events
+   * @todo error handling, try putting comma in organization
    */
   Template.formUserProfile.events({
     'submit form': function(event, template) {      
@@ -66,11 +67,20 @@ if ( Meteor.isClient ) {
         'profile.firstName' : form['firstName'].value,
         'profile.lastName' : form['lastName'].value,
         'profile.gender' : form['gender'].value,
+        'profile.organization' : form['organization'].value,
+        'profile.website' : form['website'].value,
+        'profile.bio' : form['bio'].value
       }
 
-      updateUserProfile( data, function (userProfile) {
+      console.log( form['bio'].value )
+
+      var valid = updateUserProfile( data, function (userProfile) {
         console.log( 'updateUserProfile', userProfile )
       })
+        
+      if ( valid ) {
+
+      }
 
     }
   })
