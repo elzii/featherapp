@@ -18,6 +18,17 @@ ProfileController = AppController.extend({
 
 })
 
+/**
+ * Helpers
+ */
+ProfileController.helpers({
+  profileData: function() {
+    return Meteor.user().profile;
+  },
+  debugMode: function() {
+    return false;
+  }
+})
 
 /**
  * Events
@@ -38,11 +49,6 @@ ProfileController.events({
   },
 })
 
-ProfileController.helpers({
-  profileData: function() {
-    return Meteor.user().profile;
-  }
-})
 
 /**
  * Clientside
