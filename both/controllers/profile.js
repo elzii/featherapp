@@ -24,7 +24,19 @@ ProfileController = AppController.extend({
 ProfileController.helpers({
   // Profile Form Data
   profileData: function() {
-    return Meteor.user().profile;
+
+    if ( Meteor.user().profile ) {
+      return Meteor.user().profile;  
+    } else {
+      // Set some default data to creat the profile field
+      // @BUG better way to do this?
+      updateUser({
+        // 'profile' : {}
+        'profile.gender' : 'Female'
+      }, function() {
+        return Meteor.user().profile;
+      })
+    }
   },
   // Debug
   debugMode: function() {
