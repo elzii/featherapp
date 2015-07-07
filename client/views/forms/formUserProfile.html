@@ -70,9 +70,11 @@
 <template name="formRoles">
   {{#if isInRole 'admin'}}
     <div class="form-group">
-      <label class="control-label input-label label-block">User Role(s): <i>{{currentUserRoles}}</i></label>
-      <button name="role-admin" class="btn btn-danger">Admin</button>
-      <button name="role-defalt" class="btn btn-default">Default</button>
+      <label class="control-label input-label label-block">User Roles</label>
+      {{#each currentUserRoles}}
+        <button name="role-{{.}}" class="btn btn-default">{{.}}</button>
+      {{/each}}
     </div>
+
   {{/if}}
 </template>

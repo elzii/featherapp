@@ -41,9 +41,10 @@ ProfileController.events({
   'click #update-user-debug': function (event, template) {
     event.preventDefault()
 
-    // Meteor.call('addUsersToRoles', Meteor.user(), ['admin'], function (res, err, data) {
-    //   console.log('callback', res, err, data)
-    // })
+    // Add user to roles
+    Meteor.call('addUsersToRoles', Meteor.user(), ['admin', 'moderator'], function (err) {
+      if ( err ) console.log('Error: ', err)
+    })
 
   },
 })

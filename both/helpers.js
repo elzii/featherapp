@@ -2,6 +2,7 @@
  * Methods - Roles
  * --------------------------------------------------------------------
  * @ref https://gentlenode.com/journal/meteor-13-managing-user-roles/24
+ * @ref https://github.com/alanning/meteor-roles/
  * 
  * Get Roles
  * @example
@@ -77,6 +78,19 @@ if ( Meteor.isClient ) {
     var user = Meteor.user()
     roles = Roles.getRolesForUser(user)
     return roles
+  })
+
+  /**
+   * Current User Role List
+   */
+  Template.registerHelper('currentUserRoleList', function () {
+    var user = Meteor.user()
+    roles = Roles.getRolesForUser(user)
+    
+    console.log( 'typeof roles', typeof roles, roles )
+    if ( roles.indexOf(',') > -1 ) {
+      return roles.split(',')
+    }
   })
 
 
