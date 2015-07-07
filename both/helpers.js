@@ -58,16 +58,25 @@ if ( Meteor.isClient ) {
    * Current User Email
    */
   Template.registerHelper('currentUserEmail', function () {
-    var loggedInUser = Meteor.user()
-    return loggedInUser.emails[0].address
+    var user = Meteor.user()
+    return user.emails[0].address
   })
 
   /**
    * Current User ID
    */
   Template.registerHelper('currentUserID', function () {
-    var loggedInUser = Meteor.user()
-    return loggedInUser._id
+    var user = Meteor.user()
+    return user._id
+  })
+
+  /**
+   * Current User Roles
+   */
+  Template.registerHelper('currentUserRoles', function () {
+    var user = Meteor.user()
+    roles = Roles.getRolesForUser(user)
+    return roles
   })
 
 

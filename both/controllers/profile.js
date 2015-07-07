@@ -45,10 +45,6 @@ ProfileController.events({
     //   console.log('callback', res, err, data)
     // })
 
-    var roles = Roles.getRolesForUser(user)
-
-    console.log( roles )
-
   },
 })
 

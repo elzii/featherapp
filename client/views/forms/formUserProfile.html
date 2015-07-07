@@ -55,6 +55,8 @@
       <span class="help-block"></span>
     </div>
 
+    {{> formRoles}}
+    
     <hr>
 
     <button type="submit" id="submit--formUserProfile" class="btn btn-success">Save</button>
@@ -62,4 +64,15 @@
   {{/with}}
   </form>
 
+</template>
+
+
+<template name="formRoles">
+  {{#if isInRole 'admin'}}
+    <div class="form-group">
+      <label class="control-label input-label label-block">User Role(s): <i>{{currentUserRoles}}</i></label>
+      <button name="role-admin" class="btn btn-danger">Admin</button>
+      <button name="role-defalt" class="btn btn-default">Default</button>
+    </div>
+  {{/if}}
 </template>
