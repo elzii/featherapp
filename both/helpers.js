@@ -1,10 +1,52 @@
 /**
- * Methods
+ * Methods - Roles
+ * --------------------------------------------------------------------
+ * @ref https://gentlenode.com/journal/meteor-13-managing-user-roles/24
+ * 
+ * Get Roles
+ * @example
+ *  roles = Roles.getAllRoles();
+ *  roles = Roles.getRolesForUser(user);
+ *  users = Roles.getUsersInRole('admin');
+ *
+ * Remove User from Role
+ * @example
+ *  Roles.removeUsersFromRoles(users, 'admin')
+ *  
+ * Manage Roles
+ * @example
+ *  Roles.createRole('admin');
+ *  Roles.deleteRole('admin');
+ *
+ * Template Helpers
+ * @example
+ *  {#if isInRole 'admin' 'growth hacker'}}
+ *    {{> admin_nav}}  
+ *  {{/if}}
  */
-Meteor.methods(
+Meteor.methods({
+
+  /**
+   * Add User To Roles
+   * 
+   * @param {Object} users 
+   * @param {Array} roles 
+   * @param {String} group 
+   */
+  addUsersToRoles: function(user, roles, group) {
+    
+    var user  = user || Meteor.user()
+
+    if ( !group ) {
+      return Roles.addUsersToRoles(user, roles)
+    } else {
+      return Roles.addUsersToRoles(user, roles, group)
+    }
+
+  },
 
 
-)
+})
 
 
 /**
@@ -56,6 +98,9 @@ if ( Meteor.isClient ) {
     }
   }
 
+
+
+
   /**
    * Update User Profile
    * 
@@ -63,7 +108,7 @@ if ( Meteor.isClient ) {
    * @param  {Function} callback 
    * @return {Boolean}
    */
-  updateUserProfile = function(data, callback) {
+  updateUser = function(data, callback) {
 
     // Update the current user
     var updatedUser = Meteor.users.update( 
@@ -73,7 +118,7 @@ if ( Meteor.isClient ) {
       }
     )
 
-    if (callback) callback( Meteor.user().profile )
+    if (callback) callback( Meteor.user() )
 
     return updatedUser;
   }

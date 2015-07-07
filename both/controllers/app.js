@@ -16,5 +16,11 @@ AppController = RouteController.extend({
 AppController.events({
   'click [data-action=logout]' : function() {
     AccountsTemplates.logout();
-  }
+  },
+  'click [data-debug-event]': function (event, template) {
+    event.preventDefault()
+    debugEvent(event, template, this)
+  },
 })
+
+

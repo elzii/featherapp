@@ -22,11 +22,13 @@ ProfileController = AppController.extend({
  * Helpers
  */
 ProfileController.helpers({
+  // Profile Form Data
   profileData: function() {
     return Meteor.user().profile;
   },
+  // Debug
   debugMode: function() {
-    return false;
+    return true;
   }
 })
 
@@ -36,16 +38,17 @@ ProfileController.helpers({
  * @debug
  */
 ProfileController.events({
-  'click button#update-user': function (event, template) {
+  'click #update-user-debug': function (event, template) {
     event.preventDefault()
 
-    console.log( 'event, template:', event, template )
+    // Meteor.call('addUsersToRoles', Meteor.user(), ['admin'], function (res, err, data) {
+    //   console.log('callback', res, err, data)
+    // })
 
-    updateUserProfile({
-      'profile.gender' : 'Male'
-    }, function (user_profile) {
-      console.log( 'callback', user_profile )
-    })
+    var roles = Roles.getRolesForUser(user)
+
+    console.log( roles )
+
   },
 })
 
@@ -78,10 +81,8 @@ if ( Meteor.isClient ) {
         'profile.bio' : form['bio'].value
       }
 
-      console.log( form['bio'].value )
-
-      var valid = updateUserProfile( data, function (userProfile) {
-        console.log( 'updateUserProfile', userProfile )
+      var valid = updateUser( data, function (userProfile) {
+        console.log( 'updateUser', userProfile )
       })
         
       if ( valid ) {

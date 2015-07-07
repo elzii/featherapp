@@ -10,13 +10,21 @@
         {{> formUserProfile }}
 
       </div>
+      <div class="col-sm-6" style="padding-left:30px;">
+        {{#with profileData}}
+          <h2>{{firstName}} {{lastName}} <small><a style="position:relative;top:-4px" class="label label-info" href="{{website}}">Website</a></small></h2>
+          <h5>{{organization}}</h5>
+          <p>{{bio}}</p>
+        {{/with}}
+      </div>
     </div>
   
     
     {{#if debugMode}}
       <hr>
       <h3>Debugging</h3>
-      <button id="update-user" class="btn btn-primary">Update User Gender</button>
+      <!-- <button id="update-user-debug" data-update-val="Male" data-update-key="profile.gender" class="btn btn-primary">Update User Gender</button> -->
+      <button id="update-user-debug" class="btn btn-primary">Update User DEBUG</button>
     {{/if}}
 
   </div>
