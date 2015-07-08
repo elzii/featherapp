@@ -97,11 +97,45 @@ Schema.User = new SimpleSchema({
   // Option 2: [String] type
   // If you are sure you will never need to use role groups, then
   // you can specify [String] as the type
-  roles: {
-    type: [String],
-    optional: true
-  }
+  // roles: {
+  //   type: [String],
+  //   optional: true
+  // }
 });
 
-
+// Attach Schema
 Meteor.users.attachSchema(Schema.User);
+
+
+
+
+if( Meteor.isServer ) {
+
+  
+  /**
+   * Publications
+   * @ref http://stackoverflow.com/questions/19571451/publishing-custom-meteor-user-fields
+   */
+  Meteor.publish(null, function() {
+    return Meteor.users.find( {_id: this.userId }, {
+      fields: {username: 1}
+    })
+  })
+  // Meteor.publish("userDataSubscription", function () {
+  //   return Meteor.users.find( { _id: this.userId }, {
+  //     fields: {
+  //       'username': true
+  //     }
+  //   })
+  // })
+  
+  /**
+   * Collection Privledges
+   * @ref http://stackoverflow.com/questions/16600827/trouble-with-privileges-when-adding-custom-field-to-a-meteor-user
+   */
+  Meteor.users.allow({
+    update: function (userId, user) {     
+      return userId === user._id; 
+    }
+  });
+}

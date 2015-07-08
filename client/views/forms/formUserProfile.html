@@ -2,18 +2,24 @@
   
 
   <form>
-  {{#with profileData}}
+  {{#with userData}}
+
+    <div class="form-group">
+      <label class="control-label input-label">Username</label>
+      <input class="form-control" value="{{username}}" name="username" type="text">
+      <span class="help-block"></span>
+    </div>
 
     <div class="form-group">
       <div class="row">
         <div class="col-sm-6">
           <label class="control-label input-label">First Name</label>
-          <input class="form-control" value="{{firstName}}" name="firstName" type="text">
+          <input class="form-control" value="{{profile.firstName}}" name="profile.firstName" type="text">
           <span class="help-block"></span>
         </div>
         <div class="col-sm-6">
           <label class="control-label input-label">Last Name</label>
-          <input class="form-control" value="{{lastName}}" name="lastName" type="text">
+          <input class="form-control" value="{{profile.lastName}}" name="profile.lastName" type="text">
           <span class="help-block"></span>
         </div>
       </div>
@@ -23,20 +29,20 @@
       <label class="control-label input-label label-block">Gender</label>
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary active">
-          <input type="radio" name="gender" autocomplete="off" value="{{gender}}" checked> {{gender}}
+          <input type="radio" name="profile.gender" autocomplete="off" value="{{profile.gender}}" checked> {{profile.gender}}
         </label>
         <label class="btn btn-default">
-          <input type="radio" name="gender" autocomplete="off" value="Male"> Male
+          <input type="radio" name="profile.gender" autocomplete="off" value="Male"> Male
         </label>
         <label class="btn btn-default">
-          <input type="radio" name="gender" autocomplete="off" value="Female"> Female
+          <input type="radio" name="profile.gender" autocomplete="off" value="Female"> Female
         </label>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label input-label">Organization</label>
-      <input class="form-control" value="{{organization}}" name="organization" type="text">
+      <input class="form-control" value="{{profile.organization}}" name="profile.organization" type="text">
       <span class="help-block"></span>
     </div>
 
@@ -44,14 +50,14 @@
       <label class="control-label input-label">Website</label>
       <div class="input-group">
         <!-- <span class="input-group-addon">http://</span> -->
-        <input type="text" class="form-control" value="{{website}}" name="website">
+        <input type="text" class="form-control" value="{{profile.website}}" name="profile.website">
       </div>
       <span class="help-block"></span>
     </div>
 
     <div class="form-group">
       <label class="control-label input-label">Bio</label>
-      <textarea class="form-control" name="bio" rows="5">{{bio}}</textarea>
+      <textarea class="form-control" name="profile.bio" rows="5">{{profile.bio}}</textarea>
       <span class="help-block"></span>
     </div>
 

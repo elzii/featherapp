@@ -6,6 +6,7 @@
 meteor-platform
 accounts-password
 useraccounts:bootstrap
+aldeed:template-extension
 alanning:roles
 zimme:iron-router-active
 cmather:handlebars-server@0.2.0

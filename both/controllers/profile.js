@@ -1,11 +1,12 @@
 ProfileController = AppController.extend({
 
   waitOn: function() {
-    return Meteor.users.findOne({ _id: this.userId })
+    // return Meteor.users.findOne({ _id: this.userId })
+    // return Meteor.subscribe('userDataSubscription')
   },
 
   // data: {
-    
+
   // },
 
   // onBeforeAction: function () {
@@ -18,29 +19,30 @@ ProfileController = AppController.extend({
 
 })
 
+
 /**
  * Helpers
  */
 ProfileController.helpers({
   // Profile Form Data
-  profileData: function() {
+  userData: function() {
 
-    var user = Meteor.user()
+    // var user = Meteor.user()
 
-    if ( user && user['profile'] ) {
-      return user['profile']
-    } else {
-      // Set some default data to creat the profile field
-      // @BUG better way to do this?
-      updateUser({
-        // 'profile' : {}
-        'profile.gender' : 'Male'
-      }, function (userObj) {
-        return userObj['profile']
-      })
-    }
+    // if ( user && user['profile'] ) {
+    //   return user['profile']
+    // } else {
+    //   // Set some default data to creat the profile field
+    //   // @BUG better way to do this?
+    //   updateUser({
+    //     // 'profile' : {}
+    //     'profile.gender' : 'Male'
+    //   }, function (userObj) {
+    //     return userObj['profile']
+    //   })
+    // }
 
-    // return Meteor.user().profile;
+    return Meteor.user();
   },
   // Debug
   debugMode: function() {
@@ -86,12 +88,13 @@ if ( Meteor.isClient ) {
       var form = event.target
 
       var data = {
-        'profile.firstName' : form['firstName'].value,
-        'profile.lastName' : form['lastName'].value,
-        'profile.gender' : form['gender'].value,
-        'profile.organization' : form['organization'].value,
-        'profile.website' : form['website'].value,
-        'profile.bio' : form['bio'].value
+        'username' : form['username'].value,
+        'profile.firstName' : form['profile.firstName'].value,
+        'profile.lastName' : form['profile.lastName'].value,
+        'profile.gender' : form['profile.gender'].value,
+        'profile.organization' : form['profile.organization'].value,
+        'profile.website' : form['profile.website'].value,
+        'profile.bio' : form['profile.bio'].value
       }
 
       var valid = updateUser( data, function (userProfile) {
