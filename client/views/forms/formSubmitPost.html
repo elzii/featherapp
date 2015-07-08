@@ -1,0 +1,54 @@
+<template name="formSubmitPost">
+
+  <form>
+
+    <div class="form-group">
+      <label class="control-label input-label">Title</label>
+      <input class="form-control input-half" value="{{title}}" name="title" type="text">
+      <span class="help-block"></span>
+    </div>
+
+    
+    <div class="form-group">
+      <label class="control-label input-label label-block">Type</label>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+          <input type="radio" name="profile.gender" autocomplete="off" value="text" checked> Text
+        </label>
+        <label class="btn btn-default">
+          <input class="disabled" type="radio" name="type" autocomplete="off" value="link"> Link
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label input-label">Text <small class="light">(Markdown supported)</small></label>
+      <textarea class="form-control" name="text" rows="5">{{text}}</textarea>
+      <span class="help-block"></span>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label input-label">Preview</label>
+      <div class="well">{{#markdown}}{{previewData}}{{/markdown}}</div>
+      <span class="help-block"></span>
+    </div>
+    
+
+    <div class="form-group">
+      <label class="control-label input-label">Sub</label>
+      <input class="form-control input-half" value="{{sub}}" name="sub" type="text">
+      <span class="help-block"></span>
+    </div>
+
+    <hr>
+
+    <button type="submit" id="submit--formSubmitPost" class="btn btn-success">Submit Post</button>
+
+  </form>
+
+</template>
+
+<template name="textPreview">
+  
+</template>

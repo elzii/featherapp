@@ -21,9 +21,12 @@ Router.route('/', {
 Router.route('/submit', {
   name: 'submit',
   controller: 'SubmitController',
+  layoutTemplate: 'layoutSidebar',
   data: function() {
     return {
-      
+      sidebars : {
+        'all' : true
+      },
     }
   }
 })

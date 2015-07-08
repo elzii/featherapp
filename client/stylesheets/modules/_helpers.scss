@@ -299,3 +299,7 @@
   -ms-object-fit: scale-down; 
   object-fit: scale-down; 
 }
+
+.disabled {
+  cursor: not-allowed;
+}
