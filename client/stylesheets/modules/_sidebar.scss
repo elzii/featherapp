@@ -1,0 +1,31 @@
+#sidebar {
+  height: 100%;
+  min-height: 500px;
+}
+
+.sidebar {
+  margin-bottom: 25px;
+}
+
+  .sidebar__inner {
+    width: 100%;
+    height: 100%;
+    background-color: #f7f7f7;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+  }
+
+  .sidebar__header {
+    border-radius: 4px 4px 0 0;
+    background-color: darken(#fafafa, 4);
+    border-bottom: 1px solid #e3e3e3;
+    padding: 15px 20px;
+  }
+
+  .sidebar__content {
+    padding: 20px;
+  }
+
+  .sidebar__footer {
+
+  }

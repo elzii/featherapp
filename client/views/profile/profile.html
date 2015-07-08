@@ -12,7 +12,9 @@
       </div>
       <div class="col-sm-6" style="padding-left:30px;">
 
-        {{> userProfileSummary}}
+        {{#with userData}}
+          {{> userProfileSummary}}
+        {{/with}}
 
       </div>
     </div>
@@ -26,14 +28,4 @@
     {{/if}}
 
   </div>
-</template>
-
-
-<template name="userProfileSummary">
-  {{#with userData}}
-    <h2>{{profile.firstName}} {{profile.lastName}} <small><a style="position:relative;top:-4px" class="label label-info" href="{{website}}">Website</a></small></h2>
-    <h4>{{username}}</h4>
-    <h5>{{profile.organization}}</h5>
-    <p>{{profile.bio}}</p>
-  {{/with}}
 </template>

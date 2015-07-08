@@ -1,5 +1,6 @@
 Router.configure({
   controller: 'AppController',
+  layoutTemplate: 'layoutDefault',
   loadingTemplate: 'loading'
 });
 

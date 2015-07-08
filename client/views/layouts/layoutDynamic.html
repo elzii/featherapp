@@ -1,0 +1,29 @@
+<template name="layoutDyanmic">
+  <!--[if lt IE 9]>
+    <p class="browser-warning"><strong><i class="icon-exclamation-sign"></i> Warning</strong> - You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to properly view this website.</p>
+  <![endif]-->
+
+  <div id="wrap">
+    {{> _header}}
+  
+    <div class="container">
+      <div class="row">
+
+        <div id="main" class="{{#if layout.renderSidebar}} col-md-8 {{else}} col-md-12 {{/if}}">
+          {{> yield}}
+        </div> 
+
+        {{#if layout.renderSidebar }}
+          <div id="sidebar" class="sidebars col-md-4">
+            <!-- {{> Template.dynamic template='sidebar' }} -->
+            {{> sidebar }}
+          </div>
+        {{/if}}
+
+      </div>
+    </div>  
+  </div>
+
+  {{> _footer}}
+
+</template>

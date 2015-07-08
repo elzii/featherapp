@@ -1,0 +1,40 @@
+<template name="sidebar">
+  
+  {{> sidebarSearch }}
+  {{> sidebarContribute }}
+
+</template>
+
+<template name="sidebarSearch">
+  <div class="sidebar">
+    <div class="sidebar__inner">
+      <header class="sidebar__header">
+        <h4 class="baseline">Search</h4>
+      </header>
+      <div class="sidebar__content">
+        {{> formSearchBar }}
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="sidebarContribute">
+  <div class="sidebar">
+    <div class="sidebar__inner">
+      <header class="sidebar__header">
+        <h4 class="baseline">Contribute</h4>
+      </header>
+      <div class="sidebar__content">
+        <a href="/submit" class="btn btn-primary btn-full btn-md btn-icon btn-icon--left">
+          <i class="fa fa-pencil-square-o"></i>
+          <span>Submit a Post</span>
+        </a>
+        <a href="/submit" class="btn btn-info btn-full btn-md btn-icon btn-icon--left">
+          <i class="fa fa-plus-square-o"></i>
+          <span>Create a Sub</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</template>

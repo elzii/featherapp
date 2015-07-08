@@ -1,7 +1,7 @@
 PublicProfileController = AppController.extend({
 
   waitOn: function() {
-    
+    return Meteor.subscribe('allUserData')
   },
 
   // data: {
@@ -25,7 +25,7 @@ PublicProfileController = AppController.extend({
 PublicProfileController.helpers({
 
   userData: function() {
-    return Meteor.user()
+    // return Meteor.user()
   },
   
 })

@@ -1,11 +1,9 @@
 AppController = RouteController.extend({
 
-  layoutTemplate: 'appLayout',
   notFoundTemplate: 'notfound',
   loadingTemplate: 'loading',
 
   onBeforeAction: function() {
-    
     this.next()
   }
 })

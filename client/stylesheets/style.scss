@@ -8,11 +8,20 @@
  */
 @import "config";
 
+/**
+ * Libraries
+ */
+@import "lib/mixins",
+        "lib/functions";
+
 
 /**
  * Modules
  */
 @import "modules/body",
         "modules/elements",
+        "modules/helpers",
+        "modules/content",
         "modules/buttons",
+        "modules/sidebar",
         "modules/footer";

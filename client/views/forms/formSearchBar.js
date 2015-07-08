@@ -1,0 +1,3 @@
+Template.formSearchBar.rendered = function() {
+  
+}
