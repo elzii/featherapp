@@ -1,8 +1,7 @@
 ProfileController = AppController.extend({
 
   waitOn: function() {
-    // return Meteor.users.findOne({ _id: this.userId })
-    // return Meteor.subscribe('userDataSubscription')
+    return Meteor.users.findOne({ _id: this.userId })
   },
 
   // data: {
@@ -107,8 +106,6 @@ if ( Meteor.isClient ) {
 
     }
   })
-
-
 
 
 }

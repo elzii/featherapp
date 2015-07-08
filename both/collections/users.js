@@ -116,11 +116,14 @@ if( Meteor.isServer ) {
    * Publications
    * @ref http://stackoverflow.com/questions/19571451/publishing-custom-meteor-user-fields
    */
-  Meteor.publish(null, function() {
-    return Meteor.users.find( {_id: this.userId }, {
-      fields: {username: 1}
-    })
-  })
+  
+  
+  // Meteor.publish(null, function() {
+  //   return Meteor.users.find( {_id: this.userId }, {
+  //     fields: {username: 1}
+  //   })
+  // })
+
   // Meteor.publish("userDataSubscription", function () {
   //   return Meteor.users.find( { _id: this.userId }, {
   //     fields: {
@@ -129,13 +132,28 @@ if( Meteor.isServer ) {
   //   })
   // })
   
+  Meteor.publish('allUserData', function () {
+    return Meteor.users.find({}, {
+      fields: {
+        'username': 1,
+        'profile.gender' : 1
+      }
+    })
+  })
+  
   /**
    * Collection Privledges
    * @ref http://stackoverflow.com/questions/16600827/trouble-with-privileges-when-adding-custom-field-to-a-meteor-user
    */
+  // Allow self to update own username
   Meteor.users.allow({
     update: function (userId, user) {     
       return userId === user._id; 
     }
   });
+}
+
+
+if ( Meteor.isClient ) {
+  Meteor.subscribe('allUserData')
 }
