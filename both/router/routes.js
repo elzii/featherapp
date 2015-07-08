@@ -8,6 +8,11 @@ Router.route('/profile', {
   controller: 'ProfileController'
 });
 
+Router.route('/profile/:username', {
+  name: 'publicProfile',
+  controller: 'PublicProfileController'
+});
+
 Router.plugin('ensureSignedIn', {
   only: ['profile']
 });
