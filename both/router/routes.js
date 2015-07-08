@@ -2,7 +2,30 @@
 Router.route('/', {
   name: 'home',
   controller: 'HomeController',
-  layoutTemplate: 'layoutSidebar'
+  layoutTemplate: 'layoutSidebar',
+  data : function() {
+    // sidebars : ['search', 'contribute'],
+    return {
+      sidebars : {
+        'all': true,
+        'search' : false,
+        'contribute' : false,
+      },
+      posts: Posts.find({})
+    }
+  }
+})
+
+
+// Submit Post
+Router.route('/submit', {
+  name: 'submit',
+  controller: 'SubmitController',
+  data: function() {
+    return {
+      
+    }
+  }
 })
 
 
@@ -24,12 +47,18 @@ Router.route('/profile', {
 Router.route('/profile/:username', {
   name: 'publicProfile',
   controller: 'PublicProfileController',
+  layoutTemplate: 'layoutSidebar',
   data: function() {
     return {
+      sidebars : {
+        'all' : true
+      },
       userData : Meteor.users.findOne({ username: this.params.username })
     }
   }
 })
+
+
 
 
 /**

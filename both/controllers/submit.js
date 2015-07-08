@@ -1,20 +1,19 @@
-HomeController = AppController.extend({
+SubmitController = AppController.extend({
 
   waitOn: function() {
-    return this.subscribe('posts')
+    
   },
 
   data: {
-    // posts: Posts.find({})
+    
   },
 
   onBeforeAction: function() {
-    // console.log( Meteor.users.findOne({ _id: 'ggSfLDcytH4tCNF4K' }) )
     this.next()
   },
 
   onAfterAction: function () {
-    Meta.setTitle('Home');
+    Meta.setTitle('Submit')
   }
 
 })
@@ -23,9 +22,9 @@ HomeController = AppController.extend({
 /**
  * Events
  */
-HomeController.events({
+SubmitController.events({
   'click [data-action=doSomething]': function (event, template) {
-    event.preventDefault();
+    event.preventDefault()
   }
 })
 

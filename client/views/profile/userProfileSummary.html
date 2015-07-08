@@ -1,6 +1,13 @@
 <template name="userProfileSummary">
-  <h2>{{profile.firstName}} {{profile.lastName}} <small><a style="position:relative;top:-4px" class="label label-info" href="{{website}}">Website</a></small></h2>
-  <h4>{{username}}</h4>
-  <h5>{{profile.organization}}</h5>
-  <p>{{profile.bio}}</p>
+  {{#with userData}}
+    <h2>
+      <span>{{profile.firstName}} {{profile.lastName}}</span>
+      {{#if profile.website}}
+        <small><a style="position:relative;top:-4px" class="label label-info" href="{{website}}">Website</a></small>
+      {{/if}}
+    </h2>
+    <h4>{{username}}</h4>
+    <h5>{{profile.organization}}</h5>
+    <p>{{profile.bio}}</p>
+  {{/with}}
 </template>

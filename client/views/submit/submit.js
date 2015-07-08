@@ -1,0 +1,3 @@
+Template.submit.rendered = function() {
+  
+}

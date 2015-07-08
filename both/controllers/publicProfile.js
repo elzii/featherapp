@@ -24,9 +24,9 @@ PublicProfileController = AppController.extend({
  */
 PublicProfileController.helpers({
 
-  userData: function() {
+  // userData: function() {
     // return Meteor.user()
-  },
+  // },
   
 })
 

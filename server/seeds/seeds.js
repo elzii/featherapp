@@ -54,12 +54,12 @@ Meteor.startup(function() {
     visited                 : function() { return false; }
   });
 
-  if (Posts.find({}).count() === 0) {
+  if ( Posts.find({}).count() === 0 ) {
 
-    _(10).times(function(n) {
-      Factory.create('post');
-    });
+    _(10).times(function (n) {
+      Factory.create('post')
+    })
 
   }
 
-});
+})

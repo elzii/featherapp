@@ -1,7 +1,20 @@
 <template name="sidebar">
+    
+  {{#if sidebars.all}}
+    {{> sidebarSearch }}
+    {{> sidebarContribute }}
+  {{/if}} 
+
+  {{#if sidebars.search }}
+    {{> sidebarSearch }}
+  {{/if}}
+  {{#if sidebars.contribute }}
+    {{> sidebarContribute }}
+  {{/if}}
   
-  {{> sidebarSearch }}
-  {{> sidebarContribute }}
+  
+  
+
 
 </template>
 

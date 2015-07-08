@@ -18,7 +18,7 @@ if ( Meteor.isClient ) {
    */
   Template.sidebar.helpers({
 
-    sidebars: function () {
+    sidebarItems: function () {
       var navMenus = _.map( sidebarItems, function (templateName) {
         return { 
           template: Template[templateName]
