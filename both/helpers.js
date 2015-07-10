@@ -115,11 +115,13 @@ if ( Meteor.isClient ) {
     if (collection.findOne(selector) != null) {
       collection.update( id, {
         $set: data
-      });
+      })
     } else {
       collection.insert( data )
     }
   }
+
+
 
 
 

@@ -1,16 +1,11 @@
-Schema = {};
+var Schemas = {};
 
-Schema.UserCountry = new SimpleSchema({
-  name: {
-    type: String
-  },
-  code: {
-    type: String,
-    regEx: /^[A-Z]{2}$/
-  }
-});
 
-Schema.UserProfile = new SimpleSchema({
+/**
+ * Schema : UserProfile
+ * @parent User
+ */
+Schemas.UserProfile = new SimpleSchema({
   firstName: {
     type: String,
     regEx: /^[a-zA-Z-]{2,25}$/,
@@ -43,14 +38,13 @@ Schema.UserProfile = new SimpleSchema({
   bio: {
     type: String,
     optional: true
-  },
-  country: {
-    type: Schema.UserCountry,
-    optional: true
   }
-});
+})
 
-Schema.User = new SimpleSchema({
+/**
+ * Schema : User
+ */
+Schemas.User = new SimpleSchema({
   username: {
     type: String,
     regEx: /^[a-z0-9A-Z_]{3,15}$/,
@@ -64,7 +58,7 @@ Schema.User = new SimpleSchema({
   },
   "emails.$.address": {
     type: String,
-    regEx: SimpleSchema.RegEx.Email
+    regEx: SimpleSchema.RegEx.Email 
   },
   "emails.$.verified": {
     type: Boolean
@@ -73,7 +67,7 @@ Schema.User = new SimpleSchema({
     type: Date
   },
   profile: {
-    type: Schema.UserProfile,
+    type: Schemas.UserProfile,
     optional: true
   },
   services: {
@@ -89,22 +83,24 @@ Schema.User = new SimpleSchema({
   // Roles.addUsersToRoles(userId, ["admin"], Roles.GLOBAL_GROUP);
   // You can't mix and match adding with and without a group since
   // you will fail validation in some cases.
-  roles: {
-    type: Object,
-    optional: true,
-    blackbox: true
-  },
+  // roles: {
+  //   type: Object,
+  //   optional: true,
+  //   blackbox: true
+  // },
   // Option 2: [String] type
   // If you are sure you will never need to use role groups, then
   // you can specify [String] as the type
-  // roles: {
-  //   type: [String],
-  //   optional: true
-  // }
+  roles: {
+    type: [String],
+    optional: true
+  }
 });
 
-// Attach Schema
-Meteor.users.attachSchema(Schema.User);
+
+
+// Attach Schema(s)
+Meteor.users.attachSchema(Schemas.User)
 
 
 
@@ -116,22 +112,6 @@ if( Meteor.isServer ) {
    * Publications
    * @ref http://stackoverflow.com/questions/19571451/publishing-custom-meteor-user-fields
    */
-  
-  
-  // Meteor.publish(null, function() {
-  //   return Meteor.users.find( {_id: this.userId }, {
-  //     fields: {username: 1}
-  //   })
-  // })
-
-  // Meteor.publish("userDataSubscription", function () {
-  //   return Meteor.users.find( { _id: this.userId }, {
-  //     fields: {
-  //       'username': true
-  //     }
-  //   })
-  // })
-  
   Meteor.publish('allUserData', function () {
     return Meteor.users.find({}, {
       fields: {
@@ -150,7 +130,7 @@ if( Meteor.isServer ) {
     update: function (userId, user) {     
       return userId === user._id; 
     }
-  });
+  })
 }
 
 

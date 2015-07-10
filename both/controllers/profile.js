@@ -25,23 +25,7 @@ ProfileController = AppController.extend({
 ProfileController.helpers({
   // Profile Form Data
   userData: function() {
-
-    // var user = Meteor.user()
-
-    // if ( user && user['profile'] ) {
-    //   return user['profile']
-    // } else {
-    //   // Set some default data to creat the profile field
-    //   // @BUG better way to do this?
-    //   updateUser({
-    //     // 'profile' : {}
-    //     'profile.gender' : 'Male'
-    //   }, function (userObj) {
-    //     return userObj['profile']
-    //   })
-    // }
-
-    return Meteor.user();
+    return Meteor.user()
   },
   // Debug
   debugMode: function() {
@@ -59,9 +43,9 @@ ProfileController.events({
     event.preventDefault()
 
     // Add user to roles
-    Meteor.call('addUsersToRoles', Meteor.user(), ['admin', 'moderator'], function (err) {
-      if ( err ) console.log('Error: ', err)
-    })
+    // Meteor.call('addUsersToRoles', Meteor.user(), ['admin', 'moderator'], function (err) {
+    //   if ( err ) console.log('Error: ', err)
+    // })
 
   },
 })

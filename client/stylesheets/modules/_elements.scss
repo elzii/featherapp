@@ -8,6 +8,22 @@
 }
 
 
+.form-header {
+  color: #3a3a3a;
+  line-height: 1;
+  font-size: 28px;
+  font-weight: 500;
+  margin: 10px 0 25px 0;
+  padding-bottom:12px;
+  border-bottom: 1px solid #f1f1f1;
+
+  &.form-header--well {
+    background-color: #f9f9f9;
+    padding: 12px 10px;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+  }
+}
 
 /**
  * Bootstrap Overrides
@@ -17,4 +33,7 @@
 }
 .input-half {
   width: 50%;
+}
+.help-block {
+  font-size: 12px;
 }

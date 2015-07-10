@@ -31,6 +31,20 @@ Router.route('/submit', {
   }
 })
 
+// Create Sub
+Router.route('/create', {
+  name: 'create',
+  controller: 'CreateSubController',
+  layoutTemplate: 'layoutSidebar',
+  data: function() {
+    return {
+      sidebars : {
+        'all' : true
+      },
+    }
+  }
+})
+
 
 // Profile
 Router.route('/profile', {

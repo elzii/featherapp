@@ -1,22 +1,66 @@
-Stores = new Mongo.Collection('subs');
+Subs = new Mongo.Collection('subs');
 
-Stores.attachSchema(new SimpleSchema({
+
+var Schema = {};
+// Subs.attachSchema(new SimpleSchema({
+Schema.Subs = new SimpleSchema({
   title: {
     type: String,
     label: "Title"
   },
   name: {
     type: String,
-    label: "Name"
+    label: "Name",
+    unique: true
   },
   description: {
     type: String,
     label: "Store Description"
   },
-  logo: {
-    type: Object,
+  public_description: {
+    type: String,
+    label: "Store Description",
+    optional: true
+  },
+  submit_text: {
+    type: String,
+    label: "Submit Text",
+    optional: true
+  },
+  submit_text_label: {
+    type: String,
+    label: "Submit Button Label",
     optional: true,
-    label: "Logo Image"
+  },
+  logo_url: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Url,
+    label: "Logo Image URL",
+    optional: true
+  },
+  subscribers : {
+    type: Number,
+    min: 0,
+    optional: true
+  },
+  user_is_subscriber : {
+    type: Boolean,
+    optional : true
+  },
+  created: {
+    type: Date,
+    autoValue: function() {
+      if ( this.isInsert ) {
+        return new Date;
+      } 
+      else if ( this.isUpsert ) {
+        return {$setOnInsert: new Date}
+      } 
+      else {
+        this.unset()
+      }
+    },
+    label: "Created At"
   },
   owner: {
     type: String,
@@ -27,13 +71,29 @@ Stores.attachSchema(new SimpleSchema({
       }
     },
   }
-}));
+})
+
+// Subs.before.insert(function (userId, doc) {
+//   doc.createdAt = moment().toDate()
+// })
 
 
-if(Meteor.isServer)
-{
-  Meteor.publish('subsSubscription', function (args)
-  { 
-    return Subs.find()
-  });
+Subs.attachSchema(Schema.Subs)
+
+
+if ( Meteor.isServer ) {
+  
+  Meteor.publish('allSubData', function () {
+    return Subs.find({}, {
+      fields: {
+        'name': 1,
+        'title' : 1
+      }
+    })
+  })
+
+}
+
+if ( Meteor.isClient ) {
+  Meteor.subscribe('allSubData')
 }

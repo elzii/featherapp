@@ -12,4 +12,4 @@ Meteor.publishComposite('posts', function() {
     //   }
     // ]
   }
-});
+})

@@ -47,7 +47,7 @@ Meteor.startup(function() {
     sub_id                  : function() { return 's_'+Fake.word(); },
     suggested_sort          : function() { return null; },
     thumbnail               : function() { return "https://placekitten.com/g/200/300"; },
-    title                   : function() { return Fake.sentence(30); },
+    title                   : function() { return Fake.sentence(20); },
     ups                     : function() { return _.random(1, 2000);; },
     url                     : function() { return ""; },
     user_reports            : function() { return []; },
