@@ -83,14 +83,14 @@ Subs.attachSchema(Schema.Subs)
 
 if ( Meteor.isServer ) {
   
-  Meteor.publish('allSubData', function () {
-    return Subs.find({}, {
-      fields: {
-        'name': 1,
-        'title' : 1
-      }
-    })
-  })
+  // Meteor.publish('allSubData', function () {
+  //   return Subs.find({}, {
+  //     fields: {
+  //       'name': 1,
+  //       'title' : 1
+  //     }
+  //   })
+  // })
 
 }
 

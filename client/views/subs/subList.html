@@ -1,0 +1,14 @@
+<template name="subList">
+  
+  <header class="form-header">Sub List</header>
+
+  <ul class="list-group">
+    {{#each subData}}
+      <li class="list-group-item">
+        <h4>{{ title }} <small>s/{{name}}</small></h4>
+        <p>{{ description }}</p>
+      </li>
+    {{/each}}
+  </ul>
+  
+</template>

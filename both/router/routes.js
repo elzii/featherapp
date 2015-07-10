@@ -46,6 +46,21 @@ Router.route('/create', {
 })
 
 
+// Sub List
+Router.route('/subs', {
+  name: 'subList',
+  controller: 'SubListController',
+  layoutTemplate: 'layoutSidebar',
+  data: function() {
+    return {
+      sidebars : {
+        'all' : true
+      },
+    }
+  }
+})
+
+
 // Profile
 Router.route('/profile', {
   name: 'profile',

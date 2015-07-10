@@ -1,0 +1,3 @@
+Template.subList.rendered = function() {
+  
+}
