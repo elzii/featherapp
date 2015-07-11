@@ -93,6 +93,17 @@ if ( Meteor.isClient ) {
     }
   })
 
+  /**
+   * Render Template With Options
+   * @incomplete 
+   */
+  Template.registerHelper('renderTemplateWithOptions', function (template, options) {
+    
+    var options = options || {}
+
+    return new Template[template]
+  })
+
 
   /**
    * Upsert Wrapper

@@ -8,6 +8,9 @@
 }
 
 
+/**
+ * Form Header
+ */
 .form-header {
   color: #3a3a3a;
   line-height: 1;
@@ -25,15 +28,26 @@
   }
 }
 
+
+
+
 /**
- * Bootstrap Overrides
+ * File Table
+ *
+ * @class .row
  */
-.label-block {
-  display:block;
+
+.file-table {
+
+  > div { text-align: left; }
+
 }
-.input-half {
-  width: 50%;
-}
-.help-block {
-  font-size: 12px;
-}
+  .file-table__input {
+
+  }
+  .file-table__info {
+
+  }
+  .file-table__actions {
+
+  }

@@ -51,3 +51,47 @@ createFormDataObject = function(form) {
 
   return data;
 }
+
+
+/**
+ * Validate File Type
+ * 
+ * @param  {String} type 
+ * @return {Boolean}      
+ */
+validateFileType = function(type) {
+  if ( type.match(/(\.|\/)(gif|jpe?g|png)$/i) ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+/**
+ * Send To Amazon S3
+ * Wrapper function for S3 package method
+ * 
+ * @param  {Object}   files    
+ * @param  {String}   folder   
+ * @param  {Function} callback 
+ */
+sendFilesToS3 = function(files, folder, callback) {
+  S3.upload({
+    files: files,
+    path: folder
+  }, function (error, result) {
+    callback( error, result )
+  })
+}
+
+/**
+ * Format base4 String to RAW
+ * Removes the 'base64,' prefix
+ * 
+ * @param  {String} string 
+ * @return {String}
+ */
+formatBase64StringToRAW = function(string) {
+  return string.substring(img.base64.indexOf(",") + 1);
+}

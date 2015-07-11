@@ -1,0 +1,26 @@
+<template name="inputFileUpload">
+  <div class="form-group">
+    <label class="control-label input-label label-block">{{label}} <small class="light input-info"></small></label>
+
+    <div class="row file-table">
+      <div class="col-md-3 file-table__input">
+        <button class="btn btn-default btn-gray btn-file btn-upload-file--s3">
+            <span>Browse</span>
+            <input class="input-file--s3" value="{{file}}" name="file" type="file">
+        </button>
+      </div>
+      <div class="col-md-6 file-table__info">
+        Filename
+      </div>
+      <div class="col-md-3 file-table__actions">
+        <i class="fa fa-times"></i>
+      </div>
+      
+    </div>
+
+    {{#each files}}
+      <span class="help-block">{{percent_uploaded}}</span>
+    {{/each}}
+
+  </div>
+</template>

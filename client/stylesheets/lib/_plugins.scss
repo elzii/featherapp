@@ -1,45 +1,20 @@
+/**
+ * Bootstrap Overrides
+ */
+.label-block {
+  display:block;
+}
+.input-half {
+  width: 50%;
+}
+.help-block {
+  font-size: 12px;
+}
 
 
 /**
- * bootstrap alets
+ * Alert
  */
-@-webkit-keyframes fadeOut {
-  0% {opacity: 0;}
-  10% {opacity: 1;}
-  90% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
-@keyframes fadeOut {
-  0% {opacity: 0;}
-  10% {opacity: 1;}
-  90% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
-.bootstrap-alerts {
-  position: fixed;
-  z-index: 10000;
-  padding: 10px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.bootstrap-alert {
-  animation: fadeOut 2700ms ease-in 0s 1 forwards;
-  -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
-  -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
-  width: 250px;
-  float: right;
-  clear: both;
-  margin-bottom: 5px;
-  pointer-events: auto;
-}
-
-
 .alert {
 
   .alert__close {
@@ -49,5 +24,29 @@
     line-height: 1;
     color: inherit;
     opacity:9.0;
+  }
+}
+
+/**
+ * Btn File
+ */
+.btn-file {
+  position: relative;
+  overflow: hidden;
+
+  input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
   }
 }
