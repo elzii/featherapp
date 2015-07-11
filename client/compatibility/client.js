@@ -93,5 +93,61 @@ sendFilesToS3 = function(files, folder, callback) {
  * @return {String}
  */
 formatBase64StringToRAW = function(string) {
-  return string.substring(img.base64.indexOf(",") + 1);
+  return string.substring(string.indexOf(",") + 1);
+}
+
+/**
+ * Deselect File from Input
+ * @param  {Object} input - jQuery 
+ * @return {Boolean} 
+ */
+deselectFileFromInput = function(input) {
+  if ( input instanceof jQuery ) {
+    console.log('its a jquery obj!')
+  } else {
+    console.log('its a regular obj')
+  }
+}
+
+/**
+ * Read File as base64
+ * Does not support a FileList, pass a single file from the array
+ * 
+ * @param  {Object}   file     
+ * @param  {Function} callback 
+ */
+readFileAsBase64 = function(file, callback) {
+
+  var reader = new FileReader()
+
+  // Read file as data url
+  reader.readAsDataURL( file )
+
+  reader.onloadend = function(e, file) {
+    var base64 = {
+      formatted : this.result,
+      raw       : formatBase64StringToRAW( this.result )
+    }
+    if ( callback ) callback(base64)
+  }
+
+}
+
+
+/**
+ * UInt8 To String
+ * 
+ * @param  {Array} buffer 
+ * @return {String} output
+ * 
+ * @usage     var base64 = btoa(uint8ToString(yourUint8Array))
+ * @download  window.open("data:application/octet-stream;base64," + base64)
+ */
+uint8ToString = function(buffer) {
+  var i, length, out = '';
+
+  for ( i = 0, length = buffer.length; i < length; i += 1 ) {
+    out += String.fromCharCode( buffer[i] )
+  }
+  return out
 }

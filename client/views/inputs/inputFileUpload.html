@@ -1,26 +1,25 @@
 <template name="inputFileUpload">
   <div class="form-group">
-    <label class="control-label input-label label-block">{{label}} <small class="light input-info"></small></label>
+    <label class="control-label input-label label-block">{{label}}</label>
 
-    <div class="row file-table">
-      <div class="col-md-3 file-table__input">
+    <div class="file-table">
+      <div class="file-table__input">
         <button class="btn btn-default btn-gray btn-file btn-upload-file--s3">
             <span>Browse</span>
             <input class="input-file--s3" value="{{file}}" name="file" type="file">
         </button>
       </div>
-      <div class="col-md-6 file-table__info">
-        Filename
+      <div class="file-table__info">
+        <span class="filename"></span>
+        {{#each files}}
+          <span class="percentage">{{percent_uploaded}}</span>
+        {{/each}}
       </div>
-      <div class="col-md-3 file-table__actions">
-        <i class="fa fa-times"></i>
-      </div>
+      <div class="file-table__actions"></div>
       
     </div>
 
-    {{#each files}}
-      <span class="help-block">{{percent_uploaded}}</span>
-    {{/each}}
+    <span class="help-block">An image to use as the logo of the sub.</span>
 
   </div>
 </template>
