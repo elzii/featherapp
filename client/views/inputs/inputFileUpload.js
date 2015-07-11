@@ -6,6 +6,11 @@ Template.inputFileUpload.rendered = function() {
 }
 
 
+Template.inputFileUpload.helpers({
+  'fileList': function(event) {
+    return S3.collection.find()
+  }
+})
 
 /**
  * Events
@@ -19,6 +24,7 @@ Template.inputFileUpload.events({
 
     // Select files
     var $input        = $('.input-file--s3'),
+        $input_url    = $('.input-file--s3-url'),
         $input_group  = $input.parent().parent().parent().parent('.form-group'),
         $file_table   = $input_group.find('.file-table'),
         $file_info    = $file_table.find('.file-table__info'),
@@ -26,33 +32,14 @@ Template.inputFileUpload.events({
         $input_help   = $input_group.find('.help-block'),
         files         = $input[0].files;
 
-    var file   = files[0]
+    // Set global flag
+    window.FILE_LIST_ACTIVE = true;
 
+    // Set URL value in hidden input for form submit
 
-    var base64 = {}
-
-    function readFileAsBase64(file, callback) {
-
-      var reader = new FileReader()
-
-      // Read file as data url
-      reader.readAsDataURL( file )
-
-      reader.onloadend = function(e, file) {
-        var base64 = {
-          formatted : this.result,
-          raw       : formatBase64StringToRAW( this.result )
-        }
-        if ( callback ) callback(base64)
-      }
-
-    }
-
-    readFileAsBase64( file, function (data) {
-      console.log( data )
-    })
-
-
+    // readFileAsBase64( files[0], function (data) {
+    //   console.log( data )
+    // })
 
     // Show filename
     $file_info.find('.filename').html('\
@@ -60,18 +47,19 @@ Template.inputFileUpload.events({
       <span>' + files[0].name + '</span> \
     ')
 
-
     // Set folder name as unique userId + sub name concat
-    var folder = Meteor.userId + '-sub-logo';
+    // var folder = Meteor.userId() + '-sub-logo';
+
 
     // sendFilesToS3( files, '', function (error, result) {
-
     //   console.log('sendToS3 Callback', error, result)
-
-    //   // Error 
-    //   if ( error ) {}
-        
     // })
+
+    S3.upload({ files : files, path : 'sub-logos' }, function (err, res) {
+      console.log('sendToS3 Callback', err, res)
+
+      $input_url.val( res.url )
+    })
 
   }
 })

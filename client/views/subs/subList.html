@@ -5,6 +5,9 @@
   <ul class="list-group">
     {{#each subData}}
       <li class="list-group-item">
+        {{#if logo_url}}
+          <img src="{{logo_url}}" alt="{{name}}" style="float:left;margin:0 10px 10px 0;">
+        {{/if}}
         <h4>{{ title }} <small>s/{{name}}</small></h4>
         <p>{{ description }}</p>
       </li>

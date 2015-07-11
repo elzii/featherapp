@@ -1,6 +1,7 @@
 <template name="inputFileUpload">
   <div class="form-group">
     <label class="control-label input-label label-block">{{label}}</label>
+    <input class="input-file--s3-url" value="" name="file_url" type="hidden">
 
     <div class="file-table">
       <div class="file-table__input">
@@ -11,11 +12,12 @@
       </div>
       <div class="file-table__info">
         <span class="filename"></span>
-        {{#each files}}
-          <span class="percentage">{{percent_uploaded}}</span>
+        {{#each fileList}}
+          <span class="percentage">{{percent_uploaded}}%</span>
         {{/each}}
       </div>
-      <div class="file-table__actions"></div>
+      <div class="file-table__actions">
+      </div>
       
     </div>
 

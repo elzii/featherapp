@@ -62,6 +62,7 @@ if ( Meteor.isClient ) {
           name: data.name, 
           title: data.title, 
           description: data.description,
+          logo_url: data.file_url,
           owner: Meteor.userId()
         }, function (error, result) {
           //The insert will fail, error will be set, and result will be undefined or false because "copies" is required.
